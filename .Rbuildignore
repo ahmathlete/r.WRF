@@ -1,4 +1,9 @@
 ^.*\.Rproj$
 ^\.Rproj\.user$
-*.Rout
-
+^data-raw$
+^LICENSE\.md$
+^docs$
+^production
+^.github
+^\.github$
+^README.html
