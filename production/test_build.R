@@ -1,4 +1,5 @@
 usethis::use_github_release()
+library(Rmpi)
 # round the change to the nearest number
 # reduce space between the middle plots
 devtools::document()
@@ -45,66 +46,55 @@ ahmathlete KlimaKonformC3
 # R  ----------------------------------------------------------------------
 
 print("                   ***                   ")
-usethis::use_r("clima_diagramm_4corners")
+usethis::use_r("get_ERA5_sfc")
 print("                   ***                   ")
 usethis::use_data_raw("standard_output_en")
 print("                   ***                   ")
 usethis::use_package("magick")
 print("                   ***                   ")
 
+styler::style_pkg()
 # inst --------------------------------------------------------------------
+library(ecmwfr)
+install.packages("ecmwfr", lib = "/home/h7/ahho623a/R-Packages")
+#https://vsoch.github.io/2013/install-r-packages-that-require-compilation-on-linux-without-sudo/
+install.packages('unixtools', lib = "/home/h7/ahho623a/R-Packages",repos="https://rforge.net")
+library('unixtools')
+set.tempdir('/path/to/folder')
+tempdir()
+.libPaths( c( .libPaths(), "/home/h7/ahho623a/R-Packages") )
+# RMPI --------------------------------------------------------------------
 
-usethis::read
+library(Rmpi)
 
+# initialize an Rmpi environment
+ns <- mpi.universe.size()
+mpi.spawn.Rslaves(nslaves=ns)
 
-# others ------------------------------------------------------------------
-library(readr)
-X2ter_lauf <- read_csv("~/CloudStore/Nextcloud/Shared/KlimaKonform-Results/info_simulations/2ter_lauf.csv")
+# send these commands to the slaves
+mpi.bcast.cmd( id <- mpi.comm.rank() )
+mpi.bcast.cmd( ns <- mpi.comm.size() )
+mpi.bcast.cmd( host <- mpi.get.processor.name() )
 
-X2ter_lauf$minimum<-X2ter_lauf$maximum<-NULL
+# all slaves execute this command
+mpi.remote.exec(paste("I am", id, "of", ns, "running on", host))
 
-colnames(X2ter_lauf)<-c("sim_id","variable","GCM","RCM", "rcp",
-                        "ensemble", "version", "start", "end","minimum","maximum")
-data.table::fwrite(X2ter_lauf %>%
-                     dplyr::mutate_if(is.numeric, round, digits = 3),
-                   "~/CloudStore/Nextcloud/Shared/KlimaKonform-Results/info_simulations/2ter_lauf.csv")
+# close down the Rmpi environment
+mpi.close.Rslaves(dellog = FALSE)
+mpi.exit()
 
-rm(X2ter_lauf)
+35,10
+62.3,32.3
 
-X3ter_lauf <- read_csv("~/CloudStore/Nextcloud/Shared/KlimaKonform-Results/info_simulations/3ter_lauf.csv")
+a <- wrftools::wrf_domains(max_dom = 3,
+                           map_proj = "mercator",
+                           ref_lat = 47.3,
+                           ref_lon = 22.5,
+                           truelat1 =
 
-data.table::fwrite(X3ter_lauf %>%
-                     dplyr::mutate_if(is.numeric, round, digits = 3),
-                   "~/CloudStore/Nextcloud/Shared/KlimaKonform-Results/info_simulations/3ter_lauf.csv")
-
-
-X4ter_lauf <- read_csv("~/CloudStore/Nextcloud/Shared/KlimaKonform-Results/info_simulations/4ter_lauf.csv")
-
-colnames(X4ter_lauf)<-c("sim_id","variable","GCM","RCM", "rcp",
-                        "ensemble", "version", "start", "end","minimum","maximum")
-
-data.table::fwrite(X4ter_lauf %>%
-                     dplyr::mutate_if(is.numeric, round, digits = 3),
-                   "~/CloudStore/Nextcloud/Shared/KlimaKonform-Results/info_simulations/4ter_lauf.csv")
-
-
-# find . -iname '*SpTr*'  -exec cp --parents {}  ../test \;
-
-#lubridate
-usethis::use_r("sim_linear_trend")
-usethis::use_package("ggridges")
-usethis::use_data_raw("standard_output_en")
-usethis::edit_r_environ()
-
-usethis::use_description()
-usethis::use_spell_check(vignettes = TRUE, lang = "en-GB", error = FALSE)
-load("R/sysdata.rda")
-# only one
-usethis::use_gpl3_license()
-usethis::use_readme_md()
-usethis::use_lic("stable")
-
-devtools::install_github("GuangchuangYu/badger")
-
-badger::badge_code_size()
-
+                           parent_id = c(1,1,1),
+                           parent_grid_ratio = c(1,3,9),
+                           dx = 3000,
+                           dy = 3000,
+                           dtm = (102.42*1000))
+a[[1]]
