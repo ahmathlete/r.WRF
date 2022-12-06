@@ -23,7 +23,7 @@ devtools::check_man()
 
 # installing --------------------------------------------------------------
 devtools::install(upgrade = F)
-
+usethis::use_vignette(name = "todo_list")
 
 # to do list --------------------------------------------------------------
 
@@ -86,15 +86,21 @@ mpi.exit()
 35,10
 62.3,32.3
 
+i<-4
 a <- wrftools::wrf_domains(max_dom = 3,
                            map_proj = "mercator",
-                           ref_lat = 47.3,
-                           ref_lon = 22.5,
-                           truelat1 =
-
-                           parent_id = c(1,1,1),
-                           parent_grid_ratio = c(1,3,9),
+                           ref_lat = 22.5,
+                           ref_lon = 45.5,
+                           truelat1 = 22.5,
+                           i_parent_start =c(1, c(220,280)*i),
+                           j_parent_start = c(1, c(200,215)*i),
+                           e_we = c(1000,1801,3001)*i,
+                           e_sn = c(1000,1801,3001)*i*0.75,
+                           parent_id = c(1,1,2),
+                           parent_grid_ratio = c(1,3,3),
                            dx = 3000,
                            dy = 3000,
                            dtm = (102.42*1000))
 a[[1]]
+
+usethis::use_logo(img = "../r.WRF_logo/r.WRF_logo.png")

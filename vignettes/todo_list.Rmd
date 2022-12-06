@@ -1,0 +1,33 @@
+---
+title: "todo_list"
+output: rmarkdown::html_vignette
+vignette: >
+  %\VignetteIndexEntry{todo_list}
+  %\VignetteEngine{knitr::rmarkdown}
+  %\VignetteEncoding{UTF-8}
+---
+
+```{r, include = FALSE}
+knitr::opts_chunk$set(
+  collapse = TRUE,
+  comment = "#>"
+)
+```
+
+```{r setup}
+library(r.WRF)
+```
+
+## ToDo list 
+
+### Part 1:
+1. get ERA5 ml 
+2. get ERA5 sfc 
+3. define WRF domain 
+4. 
+### Part 2:
+
+
+### Miscellaneous
+1. 
+2. 
