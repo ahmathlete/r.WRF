@@ -44,9 +44,9 @@ usethis::use_github_action_check_standard()
 ahmathlete KlimaKonformC3
 #[![repo status - closed](https://img.shields.io/badge/repo_status-closed-ff0000)](https://)
 # R  ----------------------------------------------------------------------
-
+# utilities
 print("                   ***                   ")
-usethis::use_r("get_ERA5_sfc")
+usethis::use_r("prepare_ERA5_ml_scripts")
 print("                   ***                   ")
 usethis::use_data_raw("standard_output_en")
 print("                   ***                   ")
@@ -104,3 +104,24 @@ a <- wrftools::wrf_domains(max_dom = 3,
 a[[1]]
 
 usethis::use_logo(img = "../r.WRF_logo/r.WRF_logo.png")
+
+
+# WRF domain --------------------------------------------------------------
+
+wrftools::wrf_domains(
+  max_dom = 3,
+  map_proj = "mercator",
+  ref_lat = 23,
+  ref_lon = 47,
+  truelat1 = 23,
+  parent_id = c(1, 1, 2),
+  parent_grid_ratio = c(1, 3, 3),
+  i_parent_start = c(1, 781, 1451),
+  j_parent_start = c(1, 601, 1301),
+  e_we = c(3501, 6001, 8701),
+  e_sn = c(2901, 5173, 8701),
+  dx = 3000,
+  dy = 3000,
+  dtm = (102.42 * 1000)
+)
+

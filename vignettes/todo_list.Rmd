@@ -20,12 +20,17 @@ library(r.WRF)
 
 ## ToDo list 
 
-### Part 1:
-1. get ERA5 ml 
-2. get ERA5 sfc 
-3. define WRF domain 
-4. 
-### Part 2:
+### Part 1 ERA5:
+1. prepare ERA5 ml scripts
+2. prepare ERA5 sfc scripts 
+3. prepare slurm scripts for ml & sfc
+4. use cdo to prepare the final files 
+5. 
+
+### Part 2 WRF:
+1. define WRF domain 
+2. plot WRF domain 
+3. run script for WRF 
 
 
 ### Miscellaneous
