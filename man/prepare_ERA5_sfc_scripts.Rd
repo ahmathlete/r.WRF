@@ -2,12 +2,12 @@
 % Please edit documentation in R/prepare_ERA5_sfc_scripts.R
 \name{prepare_ERA5_sfc_scripts}
 \alias{prepare_ERA5_sfc_scripts}
-\title{Prepare python scripts to get Surface Data from ERA5 Archive}
+\title{Prepare python scripts to get Surface Data on daily basis from ERA5 Archive}
 \usage{
 prepare_ERA5_sfc_scripts(
   DATE = "1988-08-5",
   VARS = "34.128/134.128/151.128/165.128/166.128/167.128",
-  AREA = "[90, -180, -90, 180,]",
+  AREA = "[ 90, -180, -90, 180, ]",
   RES = "0.25/0.25",
   FORMAT = "grib",
   PATH = "~/"
@@ -18,7 +18,7 @@ prepare_ERA5_sfc_scripts(
 time step (e.g. "1988-08-05 13:00:00") the data should be downloaded. default
 is "1988-08-05".}
 
-\item{VARS}{A charcter of variables to be downloaded. Please refer to the ERA5 Catalogue.
+\item{VARS}{A character of variables to be downloaded. Please refer to the ERA5 Catalogue.
 Default is '34.128/134.128/151.128/165.128/166.128/167.128' which includes:
 34 is Sea surface temperature
 134 is Surface pressure
@@ -38,7 +38,7 @@ Default is  "square-bracket90, -180, -90, 180,square-bracket".}
 }
 \description{
 A function to prepare python scripts to download ERA5 data,
-mainly for WRF modelling, preferably daily files.
+mainly for WRF modelling.
 }
 \author{
 Ahmed Homoudi

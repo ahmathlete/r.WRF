@@ -11,7 +11,7 @@ c.retrieve('reanalysis-era5-complete', {
     'time'   : 'TIME',
     'type'   : 'an',
     'format'  : 'FORMAT',
-    'area'    : 'AREA', 
-    'grid'    : 'RES',    
+    'area'    : AREA,
+    'grid'    : 'RES',  
 }, 'FILENAME')
 

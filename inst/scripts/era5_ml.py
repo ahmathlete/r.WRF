@@ -6,12 +6,12 @@ c.retrieve('reanalysis-era5-complete', {
     'date'    : 'DATE',
     'expver'  : '1',
     'levtype' : 'ml',
-    "levelist": "1/to/137"
+    "levelist": "1/to/137",
     'param'   : 'VARS',
     'stream'  : 'oper',
     'time'    : 'TIME',
     'type'    : 'an',
     'format'  : 'FORMAT',
-    'area'    : 'AREA', 
-    'grid'    : 'GRID',    
+    'area'    :  AREA,
+    'grid'    : 'RES',  
 }, 'FILENAME')

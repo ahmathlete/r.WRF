@@ -26,3 +26,26 @@ library(r.WRF)
 ## basic example code
 ```
 
+## Poem 
+Thanks to ChatGPT for generating this beautiful poem. 
+
+The road to WRF modelling,\
+Is long and winding and bumpy,\
+But once you master its secrets,\
+The world of climate modelling,\
+Is yours to explore and discover.
+
+With WRF under your belt,\
+You can take on any model,\
+ICON, GFS, and more,\
+Your skills and knowledge,\
+Will open doors,\
+To a world of weather and climate,\
+A world of endless possibilities.
+
+So keep on learning,\
+And never give up,\
+For the road may be tough,\
+But the rewards,\
+Are well worth the effort,\
+In the world of climate modelling.

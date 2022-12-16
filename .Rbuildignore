@@ -7,3 +7,4 @@
 ^.github
 ^\.github$
 ^README.html
+^prod

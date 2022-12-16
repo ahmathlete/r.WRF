@@ -2,43 +2,41 @@
 % Please edit documentation in R/prepare_ERA5_ml_scripts.R
 \name{prepare_ERA5_ml_scripts}
 \alias{prepare_ERA5_ml_scripts}
-\title{Prepare python scripts to get Surface Data from ERA5 Archive}
+\title{Prepare python scripts to get model level Data on daily basis from ERA5 Archive}
 \usage{
 prepare_ERA5_ml_scripts(
   DATE = "1988-08-5",
-  VARS = "34.128/134.128/151.128/165.128/166.128/167.128",
-  AREA = "[90, -180, -90, 180,]",
+  VARS = "129.128/130.128/131.128/132.128/133.128",
+  AREA = "[ 90, -180, -90, 180, ]",
   RES = "0.25/0.25",
   FORMAT = "grib",
   PATH = "~/"
 )
 }
 \arguments{
-\item{DATE}{A character indicate on which date (e.g. "1988-08-05") or
-time step (e.g. "1988-08-05 13:00:00") the data should be downloaded. default
-is "1988-08-05".}
+\item{DATE}{A character indicate on which date (e.g. "1988-08-05")
+the data should be downloaded. default is "1988-08-05".}
 
 \item{VARS}{A character of variables to be downloaded. Please refer to the ERA5 Catalogue.
-Default is '34.128/134.128/151.128/165.128/166.128/167.128' which includes:
-34 is Sea surface temperature
-134 is Surface pressure
-151 is Mean sea level pressure
-165 is 10 metre U wind component
-166 is 10 metre V wind component
-167 is 2 metre temperature}
+Default is '129/130/131/132/133' which includes:
+129.128 is Geopotential
+130.128 is Temperature
+131.128 is U component of wind
+132.128 is V component of wind
+133.128 is Specific humidity}
 
-\item{AREA}{A character of the area of interest which is specified as N, W, S, E.
+\item{AREA}{A character of the area of interest (python list) which is specified as N, W, S, E.
 Default is  "square-bracket 90, -180, -90, 180,square-bracket".}
 
 \item{RES}{Resolution of the data to be downloaded. Default is "0.25/0.25"}
 
 \item{FORMAT}{Format of the data, either grib or netcdf. Default is grib.}
 
-\item{PATH}{A chacter pointing to where the genereted script will be saved.}
+\item{PATH}{A character pointing to where the genereted script will be saved.}
 }
 \description{
 A function to prepare python scripts to download ERA5 data,
-mainly for WRF modelling, preferably daily files.
+mainly for WRF modelling.
 }
 \author{
 Ahmed Homoudi

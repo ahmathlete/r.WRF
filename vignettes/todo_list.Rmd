@@ -23,8 +23,8 @@ library(r.WRF)
 ### Part 1 ERA5:
 1. prepare ERA5 ml scripts
 2. prepare ERA5 sfc scripts 
-3. prepare slurm scripts for ml & sfc
-4. use cdo to prepare the final files 
+3. prepare slurm scripts for ml & sfc, check lagranto stuff
+4. use cdo to prepare the final files split by hour
 5. 
 
 ### Part 2 WRF:
